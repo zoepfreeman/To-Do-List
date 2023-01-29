@@ -1,0 +1,27 @@
+.app {
+  padding: 30px;
+}
+
+.todo {
+  align-items: center;
+  display: flex;
+  font-size: 20px;
+  justify-content: space-between;
+}
+
+.bg-image {
+  background-image: url('https://media.istockphoto.com/id/528917390/photo/blank-notepad-eye-glasses-coffee-pen-and-smart-phone.jpg?s=612x612&w=0&k=20&c=DTIL-A6hoyvV_eyjXQNpwAGdb-aUuW30rz5YO8Mblnk=');
+  height: 300px;
+  background-position: center;
+  /* Make the background image cover the area of the <div>, and clip the excess */
+  background-size: cover;
+  font-size: 80px;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: cursive;
+  font-style:italic;
+  text-shadow: 2px 4px 2px #000000, -.01px 0px 4px 	#b3b3b3;
+}
+
