@@ -2,6 +2,10 @@ import React from "react";
 import "./App.css";
 import { Button, Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+//start added//
+import { useState, useEffect } from "react";
+import StudentDisplay from "./components/StudentDisplay";
+//end added//
 
 
 function Todo({ todo, index, markTodo, removeTodo }) {
@@ -43,6 +47,10 @@ function FormTodo({ addTodo }) {
 }
 
 function App() {
+  //start added//
+  const [students, setStudents] = useState([]);
+  //end added//
+
   const [todos, setTodos] = React.useState([
     {
       text: "This is a sample todo",
@@ -66,6 +74,20 @@ function App() {
     newTodos.splice(index, 1);
     setTodos(newTodos);
   };
+  
+  //start added//
+  // Create an effect -> function to execute after every render
+  useEffect(() => {
+    console.log('useEffect effect callback has been called');
+    fetch("https://scratched-juniper-salto.glitch.me/kekambas")
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        const newStudents = data;
+        setStudents(newStudents);
+      })
+    }, []);
+    //end added//
 
   return (
     <div className="app">
@@ -77,9 +99,7 @@ function App() {
         <FormTodo addTodo={addTodo} />
         <div>
           {todos.map((todo, index) => (
-            <Card 
-              text={'light'}
-              bg={'info'}
+            <Card  id='blueCard'
               style={{marginBottom: 3}}
               >
               <Card.Body>
@@ -94,6 +114,7 @@ function App() {
             </Card>
           ))}
         </div>
+        <StudentDisplay students={students} />
       </div>
     </div>
   );
